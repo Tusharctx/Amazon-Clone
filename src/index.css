@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 97%;
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    --primary: 36 100% 50%;
+    --primary-foreground: 210 11% 15%;
+
+    --secondary: 210 11% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 40 10% 93%;
+    --muted-foreground: 210 5% 45%;
+
+    --accent: 36 100% 50%;
+    --accent-foreground: 210 11% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 10% 85%;
+    --input: 40 10% 85%;
+    --ring: 36 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Amazon-specific tokens */
+    --amazon-navy: 210 29% 10%;
+    --amazon-navy-light: 210 20% 20%;
+    --amazon-orange: 36 100% 50%;
+    --amazon-orange-hover: 36 100% 45%;
+    --amazon-yellow: 48 100% 50%;
+    --amazon-yellow-hover: 48 100% 45%;
+    --amazon-star: 45 100% 51%;
+    --amazon-success: 152 69% 31%;
+    --amazon-link: 205 100% 35%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 29% 10%;
+    --foreground: 0 0% 95%;
+    --card: 210 20% 14%;
+    --card-foreground: 0 0% 95%;
+    --popover: 210 20% 14%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 36 100% 50%;
+    --primary-foreground: 210 11% 15%;
+    --secondary: 210 20% 20%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 210 15% 18%;
+    --muted-foreground: 210 5% 60%;
+    --accent: 36 100% 50%;
+    --accent-foreground: 210 11% 15%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 210 15% 22%;
+    --input: 210 15% 22%;
+    --ring: 36 100% 50%;
+    --sidebar-background: 210 29% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 36 100% 50%;
+    --sidebar-primary-foreground: 210 11% 15%;
+    --sidebar-accent: 210 15% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 210 15% 22%;
+    --sidebar-ring: 36 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+  }
+}
+
+@layer components {
+  .amazon-header {
+    background-color: hsl(var(--amazon-navy));
+    color: white;
+  }
+  .amazon-header-bottom {
+    background-color: hsl(var(--amazon-navy-light));
+    color: white;
+  }
+  /* Hide scrollbar while keeping functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .amazon-btn-primary {
+    background: linear-gradient(to bottom, hsl(var(--amazon-yellow)), hsl(var(--amazon-yellow-hover)));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(40 30% 60%);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  .amazon-btn-primary:hover {
+    background: linear-gradient(to bottom, hsl(var(--amazon-yellow-hover)), hsl(40 100% 40%));
+  }
+  .amazon-btn-cart {
+    background: linear-gradient(to bottom, hsl(var(--amazon-orange)), hsl(var(--amazon-orange-hover)));
+    color: white;
+    border: 1px solid hsl(30 80% 40%);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  .amazon-btn-cart:hover {
+    background: linear-gradient(to bottom, hsl(var(--amazon-orange-hover)), hsl(30 100% 38%));
+  }
+  .amazon-link {
+    color: hsl(var(--amazon-link));
+    cursor: pointer;
+  }
+  .amazon-link:hover {
+    color: hsl(var(--amazon-orange));
+    text-decoration: underline;
+  }
+  .amazon-star {
+    color: hsl(var(--amazon-star));
+  }
+  .amazon-price {
+    color: hsl(0 0% 5%);
+    font-weight: 400;
+  }
+  .amazon-price .symbol {
+    font-size: 0.8em;
+    vertical-align: top;
+    line-height: 1;
+  }
+  .amazon-price .whole {
+    font-size: 1.75em;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .amazon-price .fraction {
+    font-size: 0.8em;
+    vertical-align: top;
+    line-height: 1;
+  }
+  .product-card {
+    @apply bg-card rounded-sm border border-border overflow-hidden transition-shadow duration-200;
+  }
+  .product-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+}
